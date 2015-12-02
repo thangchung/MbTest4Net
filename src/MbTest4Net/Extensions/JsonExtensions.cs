@@ -18,6 +18,6 @@ namespace MbTest4Net.Extensions
             return obj == null
                 ? string.Empty
                 : JsonConvert.SerializeObject(obj);
-        } 
+        }
     }
 }

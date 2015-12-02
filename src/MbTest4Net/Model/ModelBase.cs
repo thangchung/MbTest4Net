@@ -1,6 +1,6 @@
 ﻿namespace MbTest4Net.Model
 {
-    public class Predicate : ModelBase
+    public class ModelBase
     {
     }
 }

@@ -48,19 +48,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
+    <Compile Include="Exception\MbTest4NetException.cs" />
     <Compile Include="Extensions\HttpClientExtensions.cs" />
     <Compile Include="Extensions\JsonExtensions.cs" />
+    <Compile Include="Extensions\ModelExtensions.cs" />
+    <Compile Include="Fluency\FluencyBase.cs" />
+    <Compile Include="Fluency\IFluency.cs" />
+    <Compile Include="Fluency\IImposterActionFluency.cs" />
+    <Compile Include="Fluency\IImposterFluency.cs" />
+    <Compile Include="Fluency\ImposterActionFluency.cs" />
+    <Compile Include="Fluency\ImposterFluency.cs" />
     <Compile Include="Model\Imposter.cs" />
     <Compile Include="Model\Is.cs" />
+    <Compile Include="Model\ModelBase.cs" />
     <Compile Include="Model\Predicate.cs" />
     <Compile Include="Model\Response.cs" />
     <Compile Include="Model\PredicateType.cs" />
     <Compile Include="Model\Stub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="FluentInterface\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

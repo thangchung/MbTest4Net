@@ -1,5 +1,4 @@
 ﻿using System.Net;
-using MbTest4Net.Model;
 using MbTest4Net.Tests.Helpers;
 using Xunit;
 
@@ -29,28 +28,47 @@ namespace MbTest4Net.Tests
         }
 
         [Fact, TestPriority(3)]
-        public void Can_Create_Imposter_On_Port_6666()
+        public void Can_Build_Imposter_Expression()
         {
-            var imposter = new Imposter
-            {
-                Port = 6666,
-                Protocol = "http"
-            };
-            var result = _fixture.Client.CreateImposter(imposter);
-            Assert.True(result == HttpStatusCode.Created);
+            var model = _fixture.Client.Imposter
+                .With(x => x.Port, 6667)
+                .With(x => x.Protocol, "http")
+                .Build();
+
+            Assert.NotNull(model);
         }
 
         [Fact, TestPriority(4)]
-        public void Can_Delete_Imposter_On_Port_6666()
+        public void Can_Create_Imposter()
         {
-            var result = _fixture.Client.DeleteImposter(6666);
-            Assert.True(result == HttpStatusCode.OK);
+            var result = _fixture.Client
+                .Imposter
+                .With(x => x.Port, 6667)
+                .With(x => x.Protocol, "http")
+                .Do.Create();
+
+            Assert.True(result == HttpStatusCode.Created);
         }
 
         [Fact, TestPriority(5)]
+        public void Can_Delete_Imposter()
+        {
+            var result = _fixture.Client
+                .Imposter
+                .With(x => x.Port, 6667)
+                .With(x => x.Protocol, "http")
+                .Do.Delete();
+
+            Assert.True(result == HttpStatusCode.OK);
+        }
+
+        [Fact, TestPriority(6)]
         public void Can_Count_Imposter()
         {
-            var result = _fixture.Client.CountImposter();
+            var result = _fixture.Client
+                .Imposter
+                .Do.Count();
+
             Assert.True(result >= 1);
         }
     }

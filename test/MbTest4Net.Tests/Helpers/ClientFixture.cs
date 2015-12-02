@@ -1,28 +1,32 @@
 ﻿using System;
-using MbTest4Net.Model;
 
 namespace MbTest4Net.Tests.Helpers
 {
     public class ClientFixture : IDisposable
     {
-        private const int PORT = 6868;
+        private const int Port = 6868;
+        private const string Protocol = "http";
 
         public ClientFixture()
         {
             Client = new Client();
-            var imposter = new Imposter
-            {
-                Port = PORT,
-                Protocol = "http"
-            };
-            Client.CreateImposter(imposter);
+            Client
+                .Imposter
+                .With(x => x.Port, Port)
+                .With(x => x.Protocol, Protocol)
+                .Do.Create();
         }
 
         public Client Client { get; private set; }
 
         public void Dispose()
         {
-            Client.DeleteImposter(PORT);
+            Client
+                .Imposter
+                .With(x => x.Port, Port)
+                .With(x => x.Protocol, Protocol)
+                .Do.Delete();
+
             if (Client != null)
             {
                 GC.SuppressFinalize(Client);

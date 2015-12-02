@@ -3,13 +3,15 @@ using Newtonsoft.Json;
 
 namespace MbTest4Net.Model
 {
-    public class ImposterJson
+    [JsonObject]
+    internal class ImposterJson
     {
         [JsonProperty("imposters")]
-        public List<Imposter> Imposters { get; set; }     
+        public List<Imposter> Imposters { get; set; }
     }
 
-    public class Imposter
+    [JsonObject]
+    public class Imposter : ModelBase
     {
         [JsonProperty("port")]
         public int Port { get; set; }
