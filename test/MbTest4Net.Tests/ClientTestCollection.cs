@@ -43,7 +43,7 @@ namespace MbTest4Net.Tests
         {
             var result = _fixture.Client
                 .Imposter
-                .With(x => x.Port, 6667)
+                .With(x => x.Port, -10)
                 .With(x => x.Protocol, "http")
                 .Do.Create();
 

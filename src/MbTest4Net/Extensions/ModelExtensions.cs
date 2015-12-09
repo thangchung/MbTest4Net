@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 using System.Reflection;
 using MbTest4Net.Exception;
@@ -29,6 +31,17 @@ namespace MbTest4Net.Extensions
             }
 
             propertyInfo.SetValue(model, value, null);
+        }
+
+        public static void IsValid<TModel>(this TModel model)
+            where TModel : ModelBase
+        {
+            var results = new List<ValidationResult>();
+            var success = Validator.TryValidateObject(model, new ValidationContext(model, null, null), results, true);
+            if (!success)
+            {
+                throw new RuleMbTest4NetException(results);
+            }   
         }
     }
 }

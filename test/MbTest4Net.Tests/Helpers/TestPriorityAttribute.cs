@@ -3,7 +3,7 @@
 namespace MbTest4Net.Tests.Helpers
 {
     [AttributeUsage(AttributeTargets.Method)]
-    public class TestPriorityAttribute : Attribute
+    public class TestPriorityAttribute : System.Attribute
     {
         public TestPriorityAttribute(int priority)
         {

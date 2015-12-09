@@ -18,6 +18,7 @@ namespace MbTest4Net.Fluency
 
         public HttpStatusCode Create()
         {
+            _model.IsValid();
             var uri = new Uri(_builtUrl);
             var result = uri.Post(_model);
             return result;
